@@ -9,19 +9,19 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Eventos finalizados</a>
+                <a class="nav-link" href="<?= site_url('eventosFinalizados') ?>">Eventos finalizados</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Noticias</a>
+                <a class="nav-link" href="<?= site_url('noticias') ?>">Noticias</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">BackOffice</a>
+                <a class="nav-link" href="<?= site_url('BackOffice') ?>">BackOffice</a>
             </li>
 
         </ul>
-        <a href="">Iniciar sesión</a>
-        <a href=""> Cerrar sesión</a>
+        <a href="<?= site_url('loggin') ?>">Iniciar sesión</a>
+        <a href="<?= site_url('FrontOffice/usuarios/cerrarSesion') ?>"> Cerrar sesión</a>
     </div>
 </nav>
