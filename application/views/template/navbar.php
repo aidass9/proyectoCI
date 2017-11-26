@@ -1,4 +1,13 @@
+<?php
 
+session_start();
+$permisos = null;
+
+if (isset($_SESSION['usuario'])) {
+    $permisos = $_SESSION['usuario']['usuario_rol_id'];
+}
+
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Carreras populares</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,12 +25,29 @@
                 <a class="nav-link" href="<?= site_url('noticias') ?>">Noticias</a>
             </li>
 
-            <li class="nav-item">
+            <?php
+
+            if($permisos == 1 || $permisos == 2) {
+                ?>
+                <li class="nav-item">
                 <a class="nav-link" href="<?= site_url('BackOffice') ?>">BackOffice</a>
             </li>
+           <?php
+            }
+            ?>
+
 
         </ul>
-        <a href="<?= site_url('loggin') ?>">Iniciar sesión</a>
-        <a href="<?= site_url('FrontOffice/usuarios/cerrarSesion') ?>"> Cerrar sesión</a>
+
+        <?php
+            if(isset($_SESSION['usuario'])) {
+        ?>
+                <span><?= $_SESSION['usuario']['usuario_login'] ?></span>
+                <a href="<?= site_url('FrontOffice/usuarios/cerrarSesion') ?>"> Cerrar sesión</a>
+
+        <?php } else { ?>
+
+        <a href="<?= site_url('loggin') ?>">Iniciar sesión </a>
+        <?php } ?>
     </div>
 </nav>
