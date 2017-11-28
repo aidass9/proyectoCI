@@ -41,5 +41,56 @@ class BackOfficeRoles extends CI_Controller
         $this->cargarVista("BackOffice/Roles/crear", $datos);
     }
 
+    public function crear() {
+        $this->form_validation->set_rules('rol_nombre', 'Rol_nombre', 'required',
+            array('required' => 'El campo de nombre tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('rol_nivel', 'Rol_nivel', 'required',
+            array('required' => 'El campo de nivel tiene que estar rellenado'));
+
+        if (!$this->form_validation->run()) {
+
+            $this->panelCrear();
+        }
+        else {
+            $rol_nombre = $this->input->post('rol_nombre');
+            $rol_nivel = $this->input->post('rol_nivel');
+            $resultado = $this->roles_model->crear($rol_nombre, $rol_nivel);
+
+            if ($resultado) {
+
+                $this->index();
+            } else {
+
+                $this->panelCrear();
+            }
+        }
+
+    }
 
 }
+
+/*
+ *
+
+        if (!$this->form_validation->run()) {
+
+            $this->index();
+        } else {
+            $usuario_login = $this->input->post('usuario_login');
+            $usuario_clave = $this->input->post('usuario_clave');
+
+            $resultado = $this->Usuarios_model->iniciarSesion($usuario_login, $usuario_clave);
+
+            if ($resultado) {
+                //Mostrar mensaje correcto
+                redirect('');
+            } else {
+
+                $this->index();
+            }
+
+
+        }
+    }
+ * */

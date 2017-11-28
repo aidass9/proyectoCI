@@ -31,4 +31,13 @@ class Roles_model extends CI_Model
         return $query->result_array();
     }
 
+    public function crear($rol_nombre, $rol_nivel) {
+        $rol = Array(
+            'rol_nombre' => $rol_nombre,
+            'rol_nivel'  => $rol_nivel,
+        );
+
+        return $this->db->insert('roles', $rol);
+    }
+
 }
