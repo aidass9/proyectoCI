@@ -1,6 +1,7 @@
 <?php
 
-class Usuario_model extends CI_Model {
+class Usuarios_model extends CI_Model {
+    private $cantPorPagina = 5;
 
     public function __construct()  {
         parent::__construct();
@@ -40,5 +41,20 @@ class Usuario_model extends CI_Model {
     private function hash_verify($password, $hashed_password)
     {
         return password_verify($password, $hashed_password);
+    }
+
+    public function cantPagina() {
+        $cantTotal = $this->db->count_all_results('usuarios'); //cuanta cuantos resultados hay en la tabla eventos
+        return $cantTotal / $this->cantPorPagina;
+
+    }
+
+    public function obtenerPorPagina($pagina) {
+        $inicio = ($pagina -1) * $this->cantPorPagina;
+        $this->db->select('*');
+        $this->db->limit($this->cantPorPagina, $inicio);
+        $query = $this->db->get('usuarios');
+
+        return $query->result_array();
     }
 }

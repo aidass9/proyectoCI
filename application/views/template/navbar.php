@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 $permisos = null;
 
 if (isset($_SESSION['usuario'])) {
@@ -51,3 +50,10 @@ if (isset($_SESSION['usuario'])) {
         <?php } ?>
     </div>
 </nav>
+
+<br><br>
+
+<?php
+    $this->form_validation->set_error_delimiters("<div class='container alert alert-danger'>", "</div>");
+    echo validation_errors();
+?>
