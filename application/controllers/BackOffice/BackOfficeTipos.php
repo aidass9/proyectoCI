@@ -61,4 +61,11 @@ class BackOfficeTipos extends CI_Controller
             }
         }
     }
+
+    public function borrar($id) {
+        $this->tipos_model->borrar($id);
+
+        redirect('backoffice/tipos');
+
+    }
 }

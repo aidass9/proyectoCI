@@ -36,4 +36,8 @@ class Tipos_model extends CI_Model
 
         return $this->db->insert('tipos', $tipo);
     }
+
+    public function borrar($id) {
+        $this->db->delete('tipos', array('tipo_id' => $id));
+    }
 }
