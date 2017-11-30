@@ -29,4 +29,17 @@ class Noticias_model extends CI_Model
 
         return $query->result_array();
     }
+
+    public function crear($noticia_slug, $Usuario, $noticia_titulo, $noticia_fecha, $noticia_texto, $noticia_imagen) {
+        $noticia = Array(
+            'noticia_slug' => $noticia_slug,
+            'Usuario' => $Usuario,
+            'noticia_titulo' => $noticia_titulo,
+            'noticia_fecha' => $noticia_fecha,
+            'noticia_texto' => $noticia_texto,
+            'noticia_imagen' => $noticia_imagen,
+        );
+
+        return $this->db->insert('noticias', $noticia);
+    }
 }

@@ -31,13 +31,56 @@ class BackOfficeNoticias extends CI_Controller
     }
 
     public function panelEditar($id) {
-        $datos['titulo'] = "Editar eventos";
-        $this->cargarVista("BackOffice/Eventos/editar", $datos);
+        $datos['titulo'] = "Editar noticias";
+        $this->cargarVista("BackOffice/Noticias/editar", $datos);
     }
 
     public function panelCrear() {
-        $datos['titulo'] = "Crear eventos";
-        $this->cargarVista("BackOffice/Eventos/crear", $datos);
+        $datos['titulo'] = "Crear noticias";
+        $this->cargarVista("BackOffice/Noticias/crear", $datos);
+    }
+
+    public function crear() {
+        $this->form_validation->set_rules('noticia_slug', 'noticia_slug', 'required',
+            array('required' => 'El campo de slug tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('Usuario', 'Usuario', 'required',
+            array('required' => 'El campo de usuario tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_titulo', 'noticia_titulo', 'required',
+            array('required' => 'El campo de titulo tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_fecha', 'noticia_fecha', 'required',
+            array('required' => 'El campo de fecha tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_texto', 'noticia_texto', 'required',
+            array('required' => 'El campo de texto tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_imagen', 'noticia_imagen', 'required',
+            array('required' => 'El campo de imagen tiene que estar rellenado'));
+
+        if (!$this->form_validation->run()) {
+            $this->panelCrear();
+        }
+
+        else {
+            $noticia_slug = $this->input->post('noticia_slug');
+            $Usuario = $this->input->post('Usuario');
+            $noticia_titulo = $this->input->post('noticia_titulo');
+            $noticia_fecha = $this->input->post('noticia_fecha');
+            $noticia_texto = $this->input->post('noticia_texto');
+            $noticia_imagen = $this->input->post('noticia_imagen');
+
+            $resultado = $this->noticias_model->crear($noticia_slug, $Usuario, $noticia_titulo, $noticia_fecha, $noticia_texto, $noticia_imagen);
+
+            if ($resultado) {
+                $this->index();
+            }
+
+            else {
+                $this->panelCrear();
+            }
+        }
     }
 
 }
