@@ -17,7 +17,7 @@ class Tipos_model extends CI_Model
     }
 
     public function cantPagina() {
-        $cantTotal = $this->db->count_all_results('tipos'); //cuanta cuantos resultados hay en la tabla eventos
+        $cantTotal = $this->db->count_all_results('tipos');
         return $cantTotal / $this->cantPorPagina;
 
     }
@@ -29,5 +29,11 @@ class Tipos_model extends CI_Model
         $query = $this->db->get('tipos');
 
         return $query->result_array();
+    }
+
+    public function crear($tipo_descripcion) {
+        $tipo = Array('tipo_descripcion' => $tipo_descripcion);
+
+        return $this->db->insert('tipos', $tipo);
     }
 }

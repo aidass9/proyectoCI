@@ -40,4 +40,25 @@ class BackOfficeTipos extends CI_Controller
         $this->cargarVista("BackOffice/Tipos/crear", $datos);
     }
 
+    public function crear() {
+        $this->form_validation->set_rules('tipo_descripcion', 'tipo_descripcion', 'required',
+            array('required' => 'El campo de descripción tiene que estar rellenado'));
+
+        if(!$this->form_validation->run()) {
+            $this->panelCrear();
+        }
+
+        else {
+            $tipo_descripcion = $this->input->post('tipo_descripcion');
+
+            $resultado = $this->tipos_model->crear($tipo_descripcion);
+
+            if($resultado) {
+                $this->index();
+            }
+            else {
+                $this->panelCrear();
+            }
+        }
+    }
 }
