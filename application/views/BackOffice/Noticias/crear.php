@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label for="noticia_imagen">Imagen noticia</label>
-            <input type="file" class="form-control" id="noticia_imagen" name="noticia_imagen">
+            <input type="text" class="form-control" id="noticia_imagen" name="noticia_imagen" placeholder="Link imagen">
         </div>
 
         <button type="submit" class="btn btn-primary">Registrar noticia</button>

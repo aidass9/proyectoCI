@@ -32,6 +32,7 @@ class BackOfficeTipos extends CI_Controller
 
     public function panelEditar($id) {
         $datos['titulo'] = "Editar tipos";
+        $datos['tipo'] = $this->tipos_model->obtenerPorId($id);
         $this->cargarVista("BackOffice/Tipos/editar", $datos);
     }
 
@@ -67,5 +68,31 @@ class BackOfficeTipos extends CI_Controller
 
         redirect('backoffice/tipos');
 
+    }
+
+    public function editar() {
+        $id = $this->input->post('tipo_id');
+
+        $this->form_validation->set_rules('tipo_descripcion', 'tipo_descripcion', 'required',
+            array('required' => 'El campo de descripción tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('tipo_id', 'tipo_id', 'required',
+            array('required' => 'El campo de id tiene que estar rellenado'));
+
+        if(!$this->form_validation->run()) {
+
+            $this->panelEditar();
+        }
+
+        else {
+            $resultado = $this->tipos_model->editar($this->input->post());
+
+            if($resultado) {
+                redirect('backoffice/tipos');
+            }
+            else {
+                $this->panelEditar($id);
+            }
+        }
     }
 }

@@ -40,4 +40,14 @@ class Tipos_model extends CI_Model
     public function borrar($id) {
         $this->db->delete('tipos', array('tipo_id' => $id));
     }
+
+    public function obtenerPorId($id) {
+        $query = $this->db->get_where('tipos', Array('tipo_id' => $id));
+        return $query->row_array();
+    }
+
+    public function editar($tipo) {
+        return $this->db->replace('tipos', $tipo);
+
+    }
 }
