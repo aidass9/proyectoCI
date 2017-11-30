@@ -30,4 +30,26 @@ class Eventos_model extends CI_Model
         return $query->result_array();
     }
 
+    public function crear($evento_descripcion, $evento_hora, $evento_fecha, $evento_poblacion,
+                          $evento_provincia, $evento_organizador, $evento_tipo, $evento_distancia, $evento_cartel,
+                          $evento_reglamento, $evento_salida, $evento_meta, $evento_activa) {
+        $evento = Array(
+            'evento_descripcion' => $evento_descripcion,
+            'evento_hora' => $evento_hora,
+            'evento_fecha' => $evento_fecha,
+            'evento_poblacion' => $evento_poblacion,
+            'evento_provincia' => $evento_provincia,
+            'evento_organizador' => $evento_organizador,
+            'evento_tipo' => $evento_tipo,
+            'evento_distancia' => $evento_distancia,
+            'evento_cartel' => $evento_cartel,
+            'evento_reglamento' => $evento_reglamento,
+            'evento_salida' => $evento_salida,
+            'evento_meta' => $evento_meta,
+            'evento_activa' => $evento_activa,
+
+        );
+        return $this->db->insert('eventos', $evento);
+    }
+
 }

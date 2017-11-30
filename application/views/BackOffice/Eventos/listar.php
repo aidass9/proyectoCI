@@ -77,8 +77,3 @@
 
 </div>
 
-<?php
-
-print_r($eventos);
-echo $cantPaginas;
-
