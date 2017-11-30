@@ -5,7 +5,7 @@
 
     <div class="form-group">
         <label for="tipo_descripcion">Descripción tipo</label>
-        <input type="number" class="form-control" id="tipo_descripcion" name="tipo_descripcion">
+        <input type="text" class="form-control" id="tipo_descripcion" name="tipo_descripcion">
     </div>
 
     <button type="submit" class="btn btn-primary">Registrar tipo</button>

@@ -40,4 +40,42 @@ class BackOfficeUsuarios extends CI_Controller
         $this->cargarVista("BackOffice/Usuarios/crear", $datos);
     }
 
+    public function crear() {
+        $this->form_validation->set_rules('usuario_nombre', 'usuario_nombre', 'required',
+            array('required' => 'El campo de nombre tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('usuario_clave', 'usuario_clave', 'required',
+            array('required' => 'El campo de clave tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('confirmarPass', 'confirmarPass', 'required',
+            array('required' => 'El campo de clave confirmar tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('usuario_rol_id', 'usuario_rol_id', 'required',
+            array('required' => 'El campo de rol id tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('usuario_login', 'usuario_login', 'required',
+            array('required' => 'El campo de login tiene que estar rellenado'));
+
+        if(!$this->form_validation->run()) {
+            $this->panelCrear();
+        }
+
+        else {
+            $usuario_nombre = $this->input->post('usuario_nombre');
+            $usuario_clave = $this->input->post('usuario_clave');
+            $confirmarPass = $this->input->post('confirmarPass');
+            $usuario_rol_id = $this->input->post('usuario_rol_id');
+            $usuario_login = $this->input->post('usuario_login');
+
+            $resultado = $this->usuarios_model->crear($usuario_nombre, $usuario_login, $usuario_clave, $confirmarPass, $usuario_rol_id);
+
+            if($resultado) {
+                $this->index();
+            }
+
+            else {
+                $this->panelCrear();
+            }
+        }
+    }
 }

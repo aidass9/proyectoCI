@@ -14,7 +14,7 @@ class Usuarios_model extends CI_Model {
                 'usuario_nombre' => $nombre,
                 'usuario_login' => $login,
                 'usuario_rol_id' => $rol_id,
-                'usuario_clave' => $this->hash_password($password)
+                'usuario_clave' => $this->hash_password($password),
 
             );
 
@@ -44,7 +44,7 @@ class Usuarios_model extends CI_Model {
     }
 
     public function cantPagina() {
-        $cantTotal = $this->db->count_all_results('usuarios'); //cuanta cuantos resultados hay en la tabla eventos
+        $cantTotal = $this->db->count_all_results('usuarios');
         return $cantTotal / $this->cantPorPagina;
 
     }
@@ -57,4 +57,5 @@ class Usuarios_model extends CI_Model {
 
         return $query->result_array();
     }
+
 }

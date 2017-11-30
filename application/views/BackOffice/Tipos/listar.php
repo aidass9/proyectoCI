@@ -1,7 +1,7 @@
 <div class="container">
     <h1><?= $titulo ?></h1>
 
-    <a href="<?= site_url('backoffice/evento/crear') ?>">
+    <a href="<?= site_url('backoffice/tipo/crear') ?>">
         <button class="btn btn-info" type="submit">Crear tipo</button>
     </a>
 
