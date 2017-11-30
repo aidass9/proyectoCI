@@ -1,5 +1,7 @@
 <div class="container">
-    <form>
+    <h1 class="titulo"><?=strtolower($titulo) ?></h1>
+
+    <?= form_open('BackOffice/BackOfficeEventos/crear') ?>
 
         <div class="form-row">
 
