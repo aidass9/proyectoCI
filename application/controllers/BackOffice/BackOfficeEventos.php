@@ -116,4 +116,10 @@ class BackOfficeEventos extends CI_Controller
 
     }
 
+    public function borrar($id) {
+        $this->eventos_model->borrar($id);
+
+        redirect('backoffice/eventos');
+    }
+
 }
