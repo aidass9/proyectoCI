@@ -4,11 +4,14 @@ class Inicio extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('eventos_model');
     }
 
     public function index() {
         $datos['titulo'] = "Inicio";
+        $datos['eventos'] = $this->eventos_model->obtenerNoFinalizados();
         $this->cargarVista('FrontOffice/inicio', $datos);
+
     }
 
     private function cargarVista ($vista, $datos) {

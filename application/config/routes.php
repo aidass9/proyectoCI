@@ -5,6 +5,7 @@ $route['noticias'] = 'FrontOffice/noticias';
 $route['eventosfinalizados'] = 'FrontOffice/eventosFinalizados';
 $route['loggin'] = 'FrontOffice/usuarios/index';
 $route['registrar-usuario'] = 'FrontOffice/usuarios/panelCrearUsuario';
+$route['evento/(:any)'] = 'FrontOffice/eventosFinalizados/detalle/$1';
 
 /* BACKOFFICE */
 $route['backoffice'] = 'BackOffice/BackOfficeInicio';

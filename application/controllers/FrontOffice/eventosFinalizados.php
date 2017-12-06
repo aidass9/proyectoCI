@@ -4,10 +4,12 @@ class eventosFinalizados extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('eventos_model');
     }
 
     public function index() {
         $datos['titulo'] = "Eventos finalizados";
+        $datos['eventos'] = $this->eventos_model->obtenerFinalizados();
         $this->cargarVista('FrontOffice/eventosFinalizados', $datos);
     }
 
@@ -16,5 +18,9 @@ class eventosFinalizados extends CI_Controller {
         $this->load->view('template/navbar');
         $this->load->view($vista, $datos);
         $this->load->view('template/footer');
+    }
+
+    public function detalle($id) {
+        echo $id;
     }
 }

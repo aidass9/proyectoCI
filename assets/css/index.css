@@ -1,0 +1,15 @@
+.fechaPoblacion {
+    float: right;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.alert-info:hover {
+    background-color: #27AE60;
+}
+
+.alert-warning:hover {
+    background-color: orange;
+}

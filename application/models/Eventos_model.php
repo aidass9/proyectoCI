@@ -65,4 +65,13 @@ class Eventos_model extends CI_Model
         return $this->db->replace('eventos', $evento);
     }
 
+    public function obtenerFinalizados() {
+        $sql = "SELECT * FROM eventos WHERE evento_fecha <= NOW()";
+        return $this->db->query($sql)->result_array();
+    }
+
+    public function obtenerNoFinalizados() {
+        $sql = "SELECT * FROM eventos WHERE evento_fecha >= NOW()";
+        return $this->db->query($sql)->result_array();
+    }
 }
