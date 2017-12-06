@@ -61,4 +61,14 @@ class Usuarios_model extends CI_Model {
     public function borrar($id) {
         $this->db->delete('usuarios', array('usuario_id' => $id));
     }
+
+    public function obtenerPorId($id) {
+        $query = $this->db->get_where('usuarios', array('usuario_id' => $id));
+
+        return $query->row_array();
+    }
+
+    public function editar($usuario) {
+        return $this->db->replace('usuarios', $usuario);
+    }
 }

@@ -32,6 +32,7 @@ class BackOfficeUsuarios extends CI_Controller
 
     public function panelEditar($id) {
         $datos['titulo'] = "Editar usuarios";
+        $datos['usuario'] = $this->usuarios_model->obtenerPorId($id);
         $this->cargarVista("BackOffice/Usuarios/editar", $datos);
     }
 
@@ -83,5 +84,37 @@ class BackOfficeUsuarios extends CI_Controller
         $this->usuarios_model->borrar($id);
 
         redirect('backoffice/usuarios');
+    }
+
+    public function editar() {
+        $id = $this->input->post('usuario_id');
+
+        $this->form_validation->set_rules('usuario_nombre', 'ususario_nombre', 'required',
+            array('required' => 'El campo de nombre tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('usuario_clave', 'usuario_clave', 'required',
+            array('required' => 'El campo de clave tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('usuario_rol_id', 'usuario_rol_id', 'required',
+            array('required' => 'El campo de rol id tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('usuario_login', 'usuario_login', 'required',
+            array('required' => 'El campo de login tiene que estar rellenado'));
+
+        if(!$this->form_validation->run()) {
+            $this->panelEditar();
+        }
+
+        else {
+            $resultado = $this->usuarios_model->editar($this->input->post());
+
+            if($resultado) {
+                redirect('backoffice/usuarios');
+            }
+
+            else {
+                $this->panelEditar(id);
+            }
+        }
     }
 }
