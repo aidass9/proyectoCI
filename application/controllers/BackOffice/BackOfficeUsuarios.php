@@ -78,4 +78,10 @@ class BackOfficeUsuarios extends CI_Controller
             }
         }
     }
+
+    public function borrar($id) {
+        $this->usuarios_model->borrar($id);
+
+        redirect('backoffice/usuarios');
+    }
 }
