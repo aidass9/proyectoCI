@@ -68,29 +68,10 @@ class BackOfficeRoles extends CI_Controller
 
     }
 
-}
+    public function borrar($id) {
+        $this->roles_model->borrar($id);
 
-/*
- *
-
-        if (!$this->form_validation->run()) {
-
-            $this->index();
-        } else {
-            $usuario_login = $this->input->post('usuario_login');
-            $usuario_clave = $this->input->post('usuario_clave');
-
-            $resultado = $this->Usuarios_model->iniciarSesion($usuario_login, $usuario_clave);
-
-            if ($resultado) {
-                //Mostrar mensaje correcto
-                redirect('');
-            } else {
-
-                $this->index();
-            }
-
-
-        }
+        redirect('backoffice/roles');
     }
- * */
+
+}

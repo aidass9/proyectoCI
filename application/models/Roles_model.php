@@ -40,4 +40,8 @@ class Roles_model extends CI_Model
         return $this->db->insert('roles', $rol);
     }
 
+    public function borrar($id) {
+        $this->db->delete('roles', array('rol_id' => $id));
+    }
+
 }
