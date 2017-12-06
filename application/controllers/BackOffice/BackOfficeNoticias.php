@@ -83,4 +83,10 @@ class BackOfficeNoticias extends CI_Controller
         }
     }
 
+    public function borrar($id) {
+        $this->noticias_model->borrar($id);
+
+        redirect('backoffice/noticias');
+    }
+
 }

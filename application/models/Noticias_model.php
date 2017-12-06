@@ -42,4 +42,8 @@ class Noticias_model extends CI_Model
 
         return $this->db->insert('noticias', $noticia);
     }
+
+    public function borrar($id) {
+        $this->db->delete('noticias', array('noticia_id' => $id));
+    }
 }
