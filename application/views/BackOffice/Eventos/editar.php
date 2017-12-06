@@ -38,7 +38,7 @@
 
         <label for="evento_salida">Salida</label>
         <input type="text" class="form-control" id="evento_salida" name="evento_salida" value="<?= $evento['evento_salida']?>">
-s
+
         <label for="evento_meta">Meta</label>
         <input type="text" class="form-control" id="evento_meta" name="evento_meta" value="<?= $evento['evento_meta']?>">
 

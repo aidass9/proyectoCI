@@ -166,7 +166,7 @@ class BackOfficeEventos extends CI_Controller
             array('required' => 'El campo de activa tiene que estar rellenado'));
 
         if(!$this->form_validation->run()) {
-            $this->panelEditar();
+            $this->panelEditar($id);
         }
 
         else {
