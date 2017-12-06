@@ -56,4 +56,13 @@ class Eventos_model extends CI_Model
         $this->db->delete('eventos', array('evento_id' => id));
     }
 
+    public function obtenerPorId($id) {
+        $query = $this->db->get_where('eventos', array('evento_id' => $id));
+        return $query->row_array();
+    }
+
+    public function editar($evento) {
+        return $this->db->replace('eventos', $evento);
+    }
+
 }

@@ -32,6 +32,7 @@ class BackOfficeEventos extends CI_Controller
 
     public function panelEditar($id) {
         $datos['titulo'] = "Editar eventos";
+        $datos['evento'] = $this->eventos_model->obtenerPorId($id);
         $this->cargarVista("BackOffice/Eventos/editar", $datos);
     }
 
@@ -122,4 +123,61 @@ class BackOfficeEventos extends CI_Controller
         redirect('backoffice/eventos');
     }
 
+    public function editar() {
+        $id = $this->input->post('evento_id');
+
+        $this->form_validation->set_rules('evento_descripcion', 'evento_descripcion', 'required',
+            array('required' => 'El campo de descripción tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_hora', 'evento_hora', 'required',
+            array('required' => 'El campo de hora tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_fecha', 'evento_fecha', 'required',
+            array('required' => 'El campo de fecha tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_poblacion', 'evento_poblacion', 'required',
+            array('required' => 'El campo de población tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_provincia', 'evento_provincia', 'required',
+            array('required' => 'El campo de provincia tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_organizador', 'evento_organizador', 'required',
+            array('required' => 'El campo de organizador tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_tipo', 'evento_tipo', 'required',
+            array('required' => 'El campo de tipo tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_distancia', 'evento_distancia', 'required',
+            array('required' => 'El campo de distancia tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_cartel', 'evento_cartel', 'required',
+            array('required' => 'El campo de cartel tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_reglamento', 'evento_reglamento', 'required',
+            array('required' => 'El campo de reglamento tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_salida', 'evento_salida', 'required',
+            array('required' => 'El campo de salida tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_meta', 'evento_meta', 'required',
+            array('required' => 'El campo de meta tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('evento_activa', 'evento_activa', 'required',
+            array('required' => 'El campo de activa tiene que estar rellenado'));
+
+        if(!$this->form_validation->run()) {
+            $this->panelEditar();
+        }
+
+        else {
+            $resultado = $this->eventos_model->editar($this->input->post());
+
+            if($resultado) {
+                redirect('backoffice/eventos');
+            }
+            else {
+                $this->panelEditar($id);
+            }
+        }
+     }
 }
