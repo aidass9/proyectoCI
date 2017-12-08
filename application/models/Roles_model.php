@@ -44,4 +44,13 @@ class Roles_model extends CI_Model
         $this->db->delete('roles', array('rol_id' => $id));
     }
 
+    public function obtenerPorId($id) {
+        $query = $this->db->get_where('roles', Array('rol_id' => $id));
+        return $query->row_array();
+    }
+
+    public function editar($rol) {
+        return $this->db->replace('roles', $rol);
+    }
+
 }

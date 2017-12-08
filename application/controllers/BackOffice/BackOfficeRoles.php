@@ -33,6 +33,7 @@ class BackOfficeRoles extends CI_Controller
 
     public function panelEditar($id) {
         $datos['titulo'] = "Editar roles";
+        $datos['rol'] = $this->roles_model->obtenerPorId($id);
         $this->cargarVista("BackOffice/Roles/editar", $datos);
     }
 
@@ -74,4 +75,29 @@ class BackOfficeRoles extends CI_Controller
         redirect('backoffice/roles');
     }
 
+    public function editar() {
+        $id = $this->input->post('rol_id');
+
+        $this->form_validation->set_rules('rol_nombre', 'rol_nombre', 'required',
+            array('required' => 'El campo de nombre tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('rol_nivel', 'rol_nivel', 'required',
+            array('required' => 'El campo de nivel tiene que estar rellenado'));
+
+        if(!$this->form_validation->run()) {
+
+            $this->panelEditar();
+        }
+
+        else {
+            $resultado = $this->roles_model->editar($this->input->post());
+
+            if($resultado) {
+                redirect('backoffice/roles');
+            }
+            else {
+                $this->panelEditar($id);
+            }
+        }
+    }
 }
