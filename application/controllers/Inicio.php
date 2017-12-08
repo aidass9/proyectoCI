@@ -9,6 +9,7 @@ class Inicio extends CI_Controller {
 
     public function index() {
         $datos['titulo'] = "Inicio";
+        $datos['titulo'] = "Eventos activos";
         $datos['eventos'] = $this->eventos_model->obtenerNoFinalizados();
         $this->cargarVista('FrontOffice/inicio', $datos);
 

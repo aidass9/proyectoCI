@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "fredokaOneRegular";
+    src: url("FredokaOne-Regular.ttf") format("truetype");
+}
+
 .fechaPoblacion {
     float: right;
 }
@@ -20,4 +25,17 @@ a {
 
 .fechaTexto {
     float: right;
+}
+
+#mensajeBackOffice {
+    font-family: fredokaOneRegular;
+    color: purple;
+}
+
+#nombreUsuario {
+    color: #ffa8ec;
+}
+
+.barraBackOfficeLoggin {
+    text-align: right;
 }

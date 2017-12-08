@@ -23,13 +23,23 @@
                     <a class="nav-link" href="<?= site_url('backoffice/usuarios/1') ?>">Usuarios</a>
                 </li>
 
-
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('') ?>">FrontOffice</a>
                 </li>
 
+                <!--<div class="barraBackOfficeLoggin">
+                    <?php
+                    if(isset($_SESSION['usuario'])) {
+                        ?>
+                        <span><?= $_SESSION['usuario']['usuario_login'] ?></span>
+                        <a href="<?= site_url('FrontOffice/usuarios/cerrarSesion') ?>"> Cerrar sesión</a>
 
+                    <?php } else { ?>
 
+                        <a href="<?= site_url('loggin') ?>">Iniciar sesión </a>
+                    <?php } ?>
+
+                </div>-->
 
             </ul>
         </div>
