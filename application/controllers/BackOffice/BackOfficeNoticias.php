@@ -32,6 +32,7 @@ class BackOfficeNoticias extends CI_Controller
 
     public function panelEditar($id) {
         $datos['titulo'] = "Editar noticias";
+        $datos['noticia'] = $this->noticias_model->obtenerPorId($id);
         $this->cargarVista("BackOffice/Noticias/editar", $datos);
     }
 
@@ -87,6 +88,45 @@ class BackOfficeNoticias extends CI_Controller
         $this->noticias_model->borrar($id);
 
         redirect('backoffice/noticias');
+    }
+
+    public function editar() {
+        $id = $this->input->post('noticia_id');
+
+        $this->form_validation->set_rules('noticia_slug', 'noticia_slug', 'required',
+            array('required' => 'El campo de slug tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('Usuario', 'Usuario', 'required',
+            array('required' => 'El campo de usuario tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_titulo', 'noticia_titulo', 'required',
+            array('required' => 'El campo de titulo tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_fecha', 'noticia_fecha', 'required',
+            array('required' => 'El campo de fecha tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_texto', 'noticia_texto', 'required',
+            array('required' => 'El campo de texto tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('noticia_imagen', 'noticia_imagen', 'required',
+            array('required' => 'El campo de imagen tiene que estar rellenado'));
+
+        if($this->form_validation->run()) {
+            $this->panelEditar();
+        }
+
+        else {
+            $resultado = $this->noticias_model->editar($this->input->post());
+
+            if($resultado) {
+                redirect('backoffice/noticias');
+            }
+            else {
+                $this->panelEditar($id);
+            }
+        }
+
+
     }
 
 }

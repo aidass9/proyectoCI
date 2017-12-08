@@ -52,6 +52,10 @@ class Noticias_model extends CI_Model
         return $query->row_array();
     }
 
+    public function editar($noticia) {
+        return $this->db->replace('noticias', $noticia);
+    }
+
     public function obtenerNoticias() {
         $sql = "SELECT * FROM noticias";
         return $this->db->query($sql)->result_array();
