@@ -21,6 +21,9 @@ class eventosFinalizados extends CI_Controller {
     }
 
     public function detalle($id) {
-        echo $id;
+        $datos['evento'] = $this->eventos_model->obtenerPorId($id);
+        $datos['titulo'] = $datos['evento']['evento_descripcion'];
+        $this->cargarVista('FrontOffice/detalleEventos', $datos);
+
     }
 }

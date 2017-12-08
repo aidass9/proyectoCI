@@ -3,4 +3,4 @@
 echo "VISTA INICIO";
 
 
-/*mostrar mensaje de que es el backoffic*/
+/*mostrar mensaje de que es el backoffice*/

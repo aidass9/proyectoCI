@@ -4,10 +4,12 @@ class noticias extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('noticias_model');
     }
 
     public function index() {
         $datos['titulo'] = "Noticias";
+        $datos['noticias'] = $this->noticias_model->obtenerNoticias();
         $this->cargarVista('FrontOffice/noticias', $datos);
     }
 
@@ -16,5 +18,11 @@ class noticias extends CI_Controller {
         $this->load->view('template/navbar');
         $this->load->view($vista, $datos);
         $this->load->view('template/footer');
+    }
+
+    public function detalle($id) {
+        $datos['noticia'] = $this->noticia_model->obtenerPorId($id);
+        $datos['titulo'] = $datos['noticia']['noticia_titulo'];
+        $this->cargarVista('FrontOffice/noticias', $datos);
     }
 }

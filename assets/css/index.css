@@ -7,9 +7,17 @@ a {
 }
 
 .alert-info:hover {
-    background-color: #27AE60;
+    background-color: #85a8ae;
 }
 
 .alert-warning:hover {
     background-color: orange;
+}
+
+.alert-danger:hover {
+    background-color: #ab81ad;
+}
+
+.fechaTexto {
+    float: right;
 }

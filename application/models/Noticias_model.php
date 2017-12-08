@@ -46,4 +46,14 @@ class Noticias_model extends CI_Model
     public function borrar($id) {
         $this->db->delete('noticias', array('noticia_id' => $id));
     }
+
+    public function obtenerPorId($id) {
+        $query = $this->db->get_where('noticias', array('noticia_id' => $id));
+        return $query->row_array();
+    }
+
+    public function obtenerNoticias() {
+        $sql = "SELECT * FROM noticias";
+        return $this->db->query($sql)->result_array();
+    }
 }
