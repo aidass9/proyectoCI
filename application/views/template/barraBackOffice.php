@@ -10,15 +10,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('backoffice/noticias/1') ?>">Noticias</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('backoffice/roles/1') ?>">Roles</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('backoffice/eventos/1') ?>">Eventos</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('backoffice/tipos/1') ?>">Tipos</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= site_url('backoffice/participantes/1') ?>">Participantes</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('backoffice/usuarios/1') ?>">Usuarios</a>
                 </li>

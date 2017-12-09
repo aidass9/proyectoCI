@@ -42,37 +42,84 @@ class BackOfficeParticipantes extends CI_Controller
     }
 
     public function crear() {
-        $this->form_validation->set_rules('noticia_slug', 'noticia_slug', 'required',
-            array('required' => 'El campo de slug tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_fecInsc', 'participante_fecInsc', 'required',
+            array('required' => 'El campo de fecha inscripción tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('Usuario', 'Usuario', 'required',
-            array('required' => 'El campo de usuario tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_evento_id', 'participante_evento_id', 'required',
+            array('required' => 'El campo de evento id tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_titulo', 'noticia_titulo', 'required',
-            array('required' => 'El campo de titulo tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_categoria', 'participante_categoria', 'required',
+            array('required' => 'El campo de categoria tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_fecha', 'noticia_fecha', 'required',
-            array('required' => 'El campo de fecha tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_nombre', 'participante_nombre', 'required',
+            array('required' => 'El campo de nombre tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_texto', 'noticia_texto', 'required',
-            array('required' => 'El campo de texto tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_apellidos', 'participante_apellidos', 'required',
+            array('required' => 'El campo de apellidos tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_imagen', 'noticia_imagen', 'required',
-            array('required' => 'El campo de imagen tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_nif', 'participante_nif', 'required',
+            array('required' => 'El campo de nif tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('paricipante_sexo', 'paricipante_sexo', 'required',
+            array('required' => 'El campo de sexo tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_poblacion', 'participante_poblacion', 'required',
+            array('required' => 'El campo de población tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_cp', 'participante_cp', 'required',
+            array('required' => 'El campo de código postal tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_telefono', 'participante_telefono', 'required',
+            array('required' => 'El campo de teléfono tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_email', 'participante_email', 'required',
+            array('required' => 'El campo de email tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_fechaNac', 'participante_fechaNac', 'required',
+            array('required' => 'El campo de fecha nacimiento tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_club', 'participante_club', 'required',
+            array('required' => 'El campo de club tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_dorsal', 'participante_dorsal', 'required',
+            array('required' => 'El campo de dorsal tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_posGeneral', 'participante_posGeneral', 'required',
+            array('required' => 'El campo de posición tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_tiempoMeta', 'participante_tiempoMeta', 'required',
+            array('required' => 'El campo de tiempo meta tiene que estar rellenado'));
 
         if (!$this->form_validation->run()) {
             $this->panelCrear();
         }
 
         else {
-            $noticia_slug = $this->input->post('noticia_slug');
-            $Usuario = $this->input->post('Usuario');
-            $noticia_titulo = $this->input->post('noticia_titulo');
-            $noticia_fecha = $this->input->post('noticia_fecha');
-            $noticia_texto = $this->input->post('noticia_texto');
-            $noticia_imagen = $this->input->post('noticia_imagen');
+            $participante_fecInsc = $this->input->post('participante_fecInsc');
+            $participante_evento_id = $this->input->post('participante_evento_id');
+            $participante_categoria = $this->input->post('participante_categoria');
+            $participante_nombre = $this->input->post('participante_nombre');
+            $participante_apellidos = $this->input->post('participante_apellidos');
+            $participante_nif = $this->input->post('participante_nif');
+            $paricipante_sexo = $this->input->post('paricipante_sexo');
+            $participante_poblacion = $this->input->post('participante_poblacion');
+            $participante_cp = $this->input->post('participante_cp');
+            $participante_pais = $this->input->post('participante_pais');
+            $participante_telefono = $this->input->post('participante_telefono');
+            $participante_email = $this->input->post('participante_email');
+            $participante_fechaNac = $this->input->post('participante_fechaNac');
+            $participante_club = $this->input->post('participante_club');
+            $participante_dorsal = $this->input->post('participante_dorsal');
+            $participante_posGeneral = $this->input->post('participante_posGeneral');
+            $participante_tiempoMeta = $this->input->post('participante_tiempoMeta');
 
-            $resultado = $this->participantes_model->crear($noticia_slug, $Usuario, $noticia_titulo, $noticia_fecha, $noticia_texto, $noticia_imagen);
+            $resultado = $this->participantes_model->crear(
+                $participante_fecInsc, $participante_evento_id, $participante_categoria, $participante_nombre,
+                $participante_apellidos, $participante_nif, $paricipante_sexo, $participante_poblacion,
+                $participante_cp, $participante_pais, $participante_telefono, $participante_email,
+                $participante_fechaNac, $participante_club, $participante_dorsal, $participante_posGeneral,
+                $participante_tiempoMeta
+            );
 
             if ($resultado) {
                 $this->index();
@@ -91,25 +138,58 @@ class BackOfficeParticipantes extends CI_Controller
     }
 
     public function editar() {
-        $id = $this->input->post('noticia_id');
+        $id = $this->input->post('participante_id');
 
-        $this->form_validation->set_rules('noticia_slug', 'noticia_slug', 'required',
-            array('required' => 'El campo de slug tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_fecInsc', 'participante_fecInsc', 'required',
+            array('required' => 'El campo de fecha inscripción tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('Usuario', 'Usuario', 'required',
-            array('required' => 'El campo de usuario tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_evento_id', 'participante_evento_id', 'required',
+            array('required' => 'El campo de evento id tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_titulo', 'noticia_titulo', 'required',
-            array('required' => 'El campo de titulo tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_categoria', 'participante_categoria', 'required',
+            array('required' => 'El campo de categoria tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_fecha', 'noticia_fecha', 'required',
-            array('required' => 'El campo de fecha tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_nombre', 'participante_nombre', 'required',
+            array('required' => 'El campo de nombre tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_texto', 'noticia_texto', 'required',
-            array('required' => 'El campo de texto tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_apellidos', 'participante_apellidos', 'required',
+            array('required' => 'El campo de apellidos tiene que estar rellenado'));
 
-        $this->form_validation->set_rules('noticia_imagen', 'noticia_imagen', 'required',
-            array('required' => 'El campo de imagen tiene que estar rellenado'));
+        $this->form_validation->set_rules('participante_nif', 'participante_nif', 'required',
+            array('required' => 'El campo de nif tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('paricipante_sexo', 'paricipante_sexo', 'required',
+            array('required' => 'El campo de sexo tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_poblacion', 'participante_poblacion', 'required',
+            array('required' => 'El campo de población tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_cp', 'participante_cp', 'required',
+            array('required' => 'El campo de código postal tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_telefono', 'participante_telefono', 'required',
+            array('required' => 'El campo de teléfono tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_pais', 'participante_pais', 'required',
+            array('required' => 'El campo de pais tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_email', 'participante_email', 'required',
+            array('required' => 'El campo de email tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_fechaNac', 'participante_fechaNac', 'required',
+            array('required' => 'El campo de fecha nacimiento tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_club', 'participante_club', 'required',
+            array('required' => 'El campo de club tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_dorsal', 'participante_dorsal', 'required',
+            array('required' => 'El campo de dorsal tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_posGeneral', 'participante_posGeneral', 'required',
+            array('required' => 'El campo de posición tiene que estar rellenado'));
+
+        $this->form_validation->set_rules('participante_tiempoMeta', 'participante_tiempoMeta', 'required',
+            array('required' => 'El campo de tiempo meta tiene que estar rellenado'));
 
         if($this->form_validation->run()) {
             $this->panelEditar();
