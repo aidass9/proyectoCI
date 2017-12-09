@@ -27,15 +27,25 @@ a {
     float: right;
 }
 
-#mensajeBackOffice {
+#mensajeBackOffice, #mensajeBienvenida {
     font-family: fredokaOneRegular;
     color: purple;
 }
 
-#nombreUsuario {
+#nombreUsuario, #nombreAplicacion {
     color: #ffa8ec;
 }
 
 .barraBackOfficeLoggin {
     text-align: right;
+}
+
+.fotoPrincipal {
+    width: 100%;
+}
+
+span.loggin {
+    color: white;
+    padding-right: 10px;
+
 }

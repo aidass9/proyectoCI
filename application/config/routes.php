@@ -41,6 +41,12 @@ $route['backoffice/tipos'] = 'BackOffice/BackOfficeTipos/index';
 $route['backoffice/tipo/crear'] = 'BackOffice/BackOfficeTipos/panelCrear';
 $route['backoffice/tipo/editar/(:any)'] = 'BackOffice/BackOfficeTipos/panelEditar/$1';
 
+/* BACKOFFICE PARTICIPANTES*/
+$route['backoffice/participantes/(:any)'] = 'BackOffice/BackOfficeParticipantes/index/$1';
+$route['backoffice/participantes'] = 'BackOffice/BackOfficeParticipantes/index';
+$route['backoffice/participante/crear'] = 'BackOffice/BackOfficeParticipantes/panelCrear';
+$route['backoffice/participante/editar/(:any)'] = 'BackOffice/BackOfficeParticipantes/panelEditar/$1';
+
 
 
 $route['default_controller'] = 'inicio';

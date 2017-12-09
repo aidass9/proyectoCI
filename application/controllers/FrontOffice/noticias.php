@@ -11,6 +11,7 @@ class noticias extends CI_Controller {
         $datos['titulo'] = "Noticias";
         $datos['noticias'] = $this->noticias_model->obtenerNoticias();
         $this->cargarVista('FrontOffice/noticias', $datos);
+
     }
 
     private function cargarVista ($vista, $datos) {
@@ -21,8 +22,8 @@ class noticias extends CI_Controller {
     }
 
     public function detalle($id) {
-        $datos['noticia'] = $this->noticia_model->obtenerPorId($id);
+        $datos['noticia'] = $this->noticias_model->obtenerPorId($id);
         $datos['titulo'] = $datos['noticia']['noticia_titulo'];
-        $this->cargarVista('FrontOffice/noticias', $datos);
+        $this->cargarVista('FrontOffice/detalleNoticias', $datos);
     }
 }
