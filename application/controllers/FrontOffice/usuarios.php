@@ -105,9 +105,10 @@ class usuarios extends CI_Controller
 
             if ($resultado) {
                 //Mostrar mensaje correcto
+                $this->session->set_userdata('mensajes', "Exito al iniciar sesión");
                 redirect('');
             } else {
-
+                $this->session->set_userdata('errores', "Fallo al iniciar sesión");
                 $this->index();
             }
 
