@@ -59,10 +59,10 @@ class BackOfficeRoles extends CI_Controller
             $resultado = $this->roles_model->crear($rol_nombre, $rol_nivel);
 
             if ($resultado) {
-
+                $this->session->set_userdata('mensajes', "Exito al crear el rol");
                 $this->index();
             } else {
-
+                $this->session->set_userdata('errores', "Fallo al crear el rol");
                 $this->panelCrear();
             }
         }
@@ -70,7 +70,15 @@ class BackOfficeRoles extends CI_Controller
     }
 
     public function borrar($id) {
-        $this->roles_model->borrar($id);
+        $resultado = $this->roles_model->borrar($id);
+
+        if($resultado) {
+            $this->session->set_userdata('mensajes', "Exito al borrar el rol");
+        }
+
+        else {
+            $this->session->set_userdata('errores', "Fallo al borrar el rol");
+        }
 
         redirect('backoffice/roles');
     }
@@ -93,9 +101,11 @@ class BackOfficeRoles extends CI_Controller
             $resultado = $this->roles_model->editar($this->input->post());
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al editar el rol");
                 redirect('backoffice/roles');
             }
             else {
+                $this->session->set_userdata('errores', "Fallo al editar el rol");
                 $this->panelEditar($id);
             }
         }

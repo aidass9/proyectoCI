@@ -41,7 +41,7 @@ class Roles_model extends CI_Model
     }
 
     public function borrar($id) {
-        $this->db->delete('roles', array('rol_id' => $id));
+        return $this->db->delete('roles', array('rol_id' => $id));
     }
 
     public function obtenerPorId($id) {
