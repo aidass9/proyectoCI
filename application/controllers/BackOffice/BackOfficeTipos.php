@@ -55,16 +55,26 @@ class BackOfficeTipos extends CI_Controller
             $resultado = $this->tipos_model->crear($tipo_descripcion);
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al crear el tipo");
                 $this->index();
             }
             else {
+                $this->session->set_userdata('errores', "Fallo al crear el tipo");
                 $this->panelCrear();
             }
         }
     }
 
     public function borrar($id) {
-        $this->tipos_model->borrar($id);
+        $resultado = $this->tipos_model->borrar($id);
+
+        if($resultado) {
+            $this->session->set_userdata('mensajes', "Exito al borrar el tipo");
+        }
+
+        else {
+            $this->session->set_userdata('errores', "Fallo al borrar el tipo");
+        }
 
         redirect('backoffice/tipos');
 
@@ -88,9 +98,11 @@ class BackOfficeTipos extends CI_Controller
             $resultado = $this->tipos_model->editar($this->input->post());
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al editar el tipo");
                 redirect('backoffice/tipos');
             }
             else {
+                $this->session->set_userdata('errores', "Fallo al editar el tipo");
                 $this->panelEditar($id);
             }
         }
