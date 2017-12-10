@@ -10,7 +10,7 @@
         <input type="text" class="form-control" id="usuario_nombre" name="usuario_nombre"
                value="<?= $usuario['usuario_nombre']?>">
 
-        <label for="usuario_clave">Nombre usuario</label>
+        <label for="usuario_clave">Constraseña</label>
         <input type="text" class="form-control" id="usuario_clave" name="usuario_clave"
                value="<?= $usuario['usuario_clave']?>">
 

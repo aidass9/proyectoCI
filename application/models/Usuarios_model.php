@@ -59,7 +59,7 @@ class Usuarios_model extends CI_Model {
     }
 
     public function borrar($id) {
-        $this->db->delete('usuarios', array('usuario_id' => $id));
+        return $this->db->delete('usuarios', array('usuario_id' => $id));
     }
 
     public function obtenerPorId($id) {

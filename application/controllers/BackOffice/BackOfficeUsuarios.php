@@ -71,17 +71,27 @@ class BackOfficeUsuarios extends CI_Controller
             $resultado = $this->usuarios_model->crear($usuario_nombre, $usuario_login, $usuario_clave, $confirmarPass, $usuario_rol_id);
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al crear el usuario");
                 $this->index();
             }
 
             else {
+                $this->session->set_userdata('errores', "Fallo al crear el usuario");
                 $this->panelCrear();
             }
         }
     }
 
     public function borrar($id) {
-        $this->usuarios_model->borrar($id);
+        $resultado = $this->usuarios_model->borrar($id);
+
+        if($resultado) {
+            $this->session->set_userdata('mensajes', "Exito al borrar el usuario");
+        }
+
+        else {
+            $this->session->set_userdata('errores', "Fallo al borrar el usuario");
+        }
 
         redirect('backoffice/usuarios');
     }
@@ -109,11 +119,13 @@ class BackOfficeUsuarios extends CI_Controller
             $resultado = $this->usuarios_model->editar($this->input->post());
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al editar el usuario");
                 redirect('backoffice/usuarios');
             }
 
             else {
-                $this->panelEditar(id);
+                $this->session->set_userdata('errores', "Fallo al editar el usuario");
+                $this->panelEditar($id);
             }
         }
     }
