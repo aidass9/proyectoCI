@@ -107,10 +107,10 @@ class BackOfficeEventos extends CI_Controller
                 $evento_reglamento, $evento_salida, $evento_meta, $evento_activa);
 
             if ($resultado) {
-
+                $this->session->set_userdata('mensajes', "Exito al crear el evento");
                 $this->index();
             } else {
-
+                $this->session->set_userdata('errores', "Fallo al crear el evento");
                 $this->panelCrear();
             }
         }
@@ -181,9 +181,11 @@ class BackOfficeEventos extends CI_Controller
             $resultado = $this->eventos_model->editar($this->input->post());
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al editar el evento");
                 redirect('backoffice/eventos');
             }
             else {
+                $this->session->set_userdata('errores', "Fallo al editar el evento");
                 $this->panelEditar($id);
             }
         }

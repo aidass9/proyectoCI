@@ -51,9 +51,13 @@ span.loggin {
 }
 
 .mensajes {
-     color : green;
+    background-color : green;
+    text-align: center;
+    color: white;
  }
 
 .errores {
-    color : red;
+    background-color : red;
+    text-align: center;
+    color: white;
 }
