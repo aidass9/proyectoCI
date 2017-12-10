@@ -85,7 +85,15 @@ class BackOfficeNoticias extends CI_Controller
     }
 
     public function borrar($id) {
-        $this->noticias_model->borrar($id);
+        $resultado = $this->noticias_model->borrar($id);
+
+        if($resultado) {
+            $this->session->set_userdata('mensajes', "Exito al borrar la noticia");
+        }
+
+        else {
+            $this->session->set_userdata('errores', "Fallo al borrar la noticia");
+        }
 
         redirect('backoffice/noticias');
     }

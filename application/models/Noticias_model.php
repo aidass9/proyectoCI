@@ -44,7 +44,7 @@ class Noticias_model extends CI_Model
     }
 
     public function borrar($id) {
-        $this->db->delete('noticias', array('noticia_id' => $id));
+        return $this->db->delete('noticias', array('noticia_id' => $id));
     }
 
     public function obtenerPorId($id) {
