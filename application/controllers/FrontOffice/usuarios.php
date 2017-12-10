@@ -76,8 +76,10 @@ class usuarios extends CI_Controller
 
             if ($resultado) {
                 //Mostrar mensaje correcto
+                $this->session->set_userdata('mensajes', "Exito al crear el usuario");
                 redirect('loggin');
             } else {
+                $this->session->set_userdata('errores', "Fallo al crear el usuario");
                 $this->panelCrearUsuario();
             }
 
