@@ -75,10 +75,12 @@ class BackOfficeNoticias extends CI_Controller
             $resultado = $this->noticias_model->crear($noticia_slug, $Usuario, $noticia_titulo, $noticia_fecha, $noticia_texto, $noticia_imagen);
 
             if ($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al crear la noticia");
                 $this->index();
             }
 
             else {
+                $this->session->set_userdata('errores', "Fallo al crear la noticia");
                 $this->panelCrear();
             }
         }
