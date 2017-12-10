@@ -127,9 +127,11 @@ class BackOfficeNoticias extends CI_Controller
             $resultado = $this->noticias_model->editar($this->input->post());
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al editar la noticia");
                 redirect('backoffice/noticias');
             }
             else {
+                $this->session->set_userdata('errores', "Fallo al editar la noticia");
                 $this->panelEditar($id);
             }
         }
