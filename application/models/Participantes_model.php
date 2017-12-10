@@ -8,7 +8,7 @@
 
 class Participantes_model extends CI_Model
 {
-    private $cantPorPagina = 5;
+    private $cantPorPagina = 100;
 
     public function __construct()
 {
@@ -30,7 +30,7 @@ class Participantes_model extends CI_Model
         return $query->result_array();
     }
 
-    public function crearcrear(
+    public function crear(
         $participante_fecInsc, $participante_evento_id, $participante_categoria, $participante_nombre,
         $participante_apellidos, $participante_nif, $paricipante_sexo, $participante_poblacion,
         $participante_cp, $participante_pais, $participante_telefono, $participante_email,
@@ -61,11 +61,11 @@ class Participantes_model extends CI_Model
     }
 
     public function borrar($id) {
-        $this->db->delete('participantes', array('$participante_id' => $id));
+        $this->db->delete('participantes', array('participante_id' => $id));
     }
 
     public function obtenerPorId($id) {
-        $query = $this->db->get_where('participantes', array('$participante_id' => $id));
+        $query = $this->db->get_where('participantes', array('participante_id' => $id));
         return $query->row_array();
     }
 

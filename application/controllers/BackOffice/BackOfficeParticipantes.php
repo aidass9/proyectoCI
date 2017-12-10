@@ -15,6 +15,7 @@ class BackOfficeParticipantes extends CI_Controller
         }
         $this->load->model('participantes_model');
     }
+
     public function cargarVista($vista, $datos){
 
         $this->load->view('template/header', $datos);
