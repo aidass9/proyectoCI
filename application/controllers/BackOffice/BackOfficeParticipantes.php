@@ -123,17 +123,27 @@ class BackOfficeParticipantes extends CI_Controller
             );
 
             if ($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al crear el participante");
                 $this->index();
             }
 
             else {
+                $this->session->set_userdata('errores', "Fallo al crear el participante");
                 $this->panelCrear();
             }
         }
     }
 
     public function borrar($id) {
-        $this->participantes_model->borrar($id);
+        $resultado = $this->participantes_model->borrar($id);
+
+        if($resultado) {
+            $this->session->set_userdata('mensajes', "Exito al borrar el participante");
+        }
+
+        else {
+            $this->session->set_userdata('errores', "Fallo al borrar el participante");
+        }
 
         redirect('backoffice/participantes');
     }
@@ -200,9 +210,11 @@ class BackOfficeParticipantes extends CI_Controller
             $resultado = $this->participantes_model->editar($this->input->post());
 
             if($resultado) {
+                $this->session->set_userdata('mensajes', "Exito al editar el participante");
                 redirect('backoffice/participantes');
             }
             else {
+                $this->session->set_userdata('errores', "Fallo al editar el participante");
                 $this->panelEditar($id);
             }
         }

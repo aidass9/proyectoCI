@@ -61,7 +61,7 @@ class Participantes_model extends CI_Model
     }
 
     public function borrar($id) {
-        $this->db->delete('participantes', array('participante_id' => $id));
+        return $this->db->delete('participantes', array('participante_id' => $id));
     }
 
     public function obtenerPorId($id) {
