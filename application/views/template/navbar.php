@@ -57,4 +57,15 @@ if (isset($_SESSION['usuario'])) {
 <?php
     $this->form_validation->set_error_delimiters("<div class='container alert alert-danger'>", "</div>");
     echo validation_errors();
+
+    if(isset($_SESSION['mensajes'])){
+        echo "<div class='mensajes'>".$_SESSION['mensajes']."</div>";
+        $this->session->unset_userdata('mensajes');
+    }
+
+if(isset($_SESSION['errores'])){
+    echo "<div class='errores'>".$_SESSION['errores']."</div>";
+    $this->session->unset_userdata('errores');
+}
+
 ?>

@@ -53,7 +53,8 @@ class Eventos_model extends CI_Model
     }
 
     public function borrar($id) {
-        $this->db->delete('eventos', array('evento_id' => id));
+        return $this->db->delete('eventos', array('evento_id' => $id));
+
     }
 
     public function obtenerPorId($id) {

@@ -49,3 +49,11 @@ span.loggin {
     padding-right: 10px;
 
 }
+
+.mensajes {
+     color : green;
+ }
+
+.errores {
+    color : red;
+}

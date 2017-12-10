@@ -33,7 +33,7 @@ class BackOfficeParticipantes extends CI_Controller
 
     public function panelEditar($id) {
         $datos['titulo'] = "Editar participantes";
-        $datos['noticia'] = $this->participantes_model->obtenerPorId($id);
+        $datos['participante'] = $this->participantes_model->obtenerPorId($id);
         $this->cargarVista("BackOffice/Participantes/editar", $datos);
     }
 

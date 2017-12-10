@@ -118,7 +118,15 @@ class BackOfficeEventos extends CI_Controller
     }
 
     public function borrar($id) {
-        $this->eventos_model->borrar($id);
+        $resultado = $this->eventos_model->borrar($id);
+
+        if($resultado) {
+            $this->session->set_userdata('mensajes', "Exito al borrar el evento");
+        }
+
+        else {
+            $this->session->set_userdata('errores', "Fallo al borrar el evento");
+        }
 
         redirect('backoffice/eventos');
     }
